@@ -1,0 +1,21 @@
+import React from "react";
+import "./TodoFooter.css";
+import { Link } from "react-router-dom";
+
+type TodoFooterProps = {
+  numberOfIncompleteTasks: number;
+};
+
+const TodoFooter: React.FC<TodoFooterProps> = (props: TodoFooterProps) => {
+  return (
+    <div className="todo-footer">
+      <p data-testid="para">
+        {props.numberOfIncompleteTasks}{" "}
+        {props.numberOfIncompleteTasks === 1 ? "task" : "tasks"} left
+      </p>
+      <Link to="/followers">Followers</Link>
+    </div>
+  );
+};
+
+export default TodoFooter;
