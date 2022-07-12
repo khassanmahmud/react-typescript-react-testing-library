@@ -1,9 +1,13 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import AddInput from "../AddInput";
 
 const mockedSetTodos = jest.fn();
 
 describe("Testing AddInput component", () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   it("should render input element", () => {
     render(<AddInput todos={[]} setTodos={mockedSetTodos} />);
     const inputElement = screen.getByPlaceholderText(/Add a new task here.../i);

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import Todo from "../Todo";
 
@@ -21,6 +21,10 @@ const addTask = (tasks: string[]) => {
 };
 
 describe("Testing Todo component", () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   it("should render input value in todos list", () => {
     render(<MockedTodo />);
     const inputElement = screen.getByPlaceholderText(/Add a new task here.../i);
